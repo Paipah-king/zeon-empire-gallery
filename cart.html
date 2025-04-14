@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Zeon Empire</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600&display=swap">
+  <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  <script>
+    // Immediately apply dark mode if it was set in localStorage
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+      document.documentElement.classList.add('dark-mode');
+    }
+  </script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <a href="index.html" class="logo">
+          <img src="images/zeon-logo1.jpg" alt="Zeon Empire logo">
+        </a>
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="clothes.html" class="nav-link" data-category="clothes">Clothes</a></li>
+            <li><a href="shoes.html" class="nav-link" data-category="shoes">Shoes</a></li>
+            <li><a href="gentlemen.html" class="nav-link" data-category="gentlemen">The Dapper Gentlemen</a></li>
+            <li><a href="royal-archive.html" class="nav-link" data-category="royal-archive">The Royal Archive</a></li>
+          </ul>
+        </nav>
+        <div class="nav-icons">
+          <a href="cart.html" class="icon-btn cart-btn">
+            <span class="sr-only">Cart</span>🛒 <span id="cart-count" class="cart-count">0</span>
+          </a>
+          <button id="dark-mode-toggle" class="fixed">🌙</button>
+          <button class="icon-btn menu-btn"><span class="sr-only">Menu</span>☰</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="cart-section container">
+      <h2 class="section-title">Your Cart</h2>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-summary">
+        <p class="cart-total">Total: <span id="cart-total">$0.00</span></p>
+        <div class="cart-actions">
+          <button id="clear-cart" class="btn btn-outline">Clear Cart</button>
+          <button id="proceed-to-order" class="btn btn-primary">Proceed to Order</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="section-divider"></div>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3>Shop</h3>
+          <ul>
+            <li><a href="clothes.html">Clothes</a></li>
+            <li><a href="shoes.html">Shoes</a></li>
+            <li><a href="gentlemen.html">The Dapper Gentleman</a></li>
+            <li><a href="royal-archive.html">The Royal Archive</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="https://instagram.com/paipah_1" target="_blank" rel="noopener noreferrer">📷 Instagram</a></li>
+            <li><a href="https://x.com/Zeon_Empire" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="copyright">
+    <p>© 2025 Zeon Empire. All rights reserved.</p>
+  </div>
+
+
+  <!-- Order Modal -->
+  <div id="order-modal" class="modal">
+    <div class="modal-content order-modal-content">
+      <button class="close-order-modal">※</button>
+      <h2>Choose How To Order</h2>
+      <p>Where would you like to place your order?</p>
+      <div class="social-order-buttons">
+        <a href="https://wa.me/8163143618/" id="whatsapp-order" class="social-order-btn whatsapp-btn">
+          💬 <span>ORDER ON WHATSAPP</span>
+        </a>
+        <a href="https://www.instagram.com/direct/t/17844425490149328" id="instagram-order" class="social-order-btn instagram-btn">
+          📷 <span>ORDER ON INSTAGRAM</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Overlay -->
+  <div id="overlay" class="overlay"></div>
+
+  <!-- Success Toast -->
+  <div id="success-toast" class="toast" style="display: none;">
+    <p>Your order has been sent!</p>
+  </div>
+
+  <script src="catalogue.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('whatsapp-order').addEventListener('click', function() {
+      showToast();
+    });
+
+    document.getElementById('instagram-order').addEventListener('click', function() {
+      showToast();
+    });
+
+    function showToast() {
+      const toast = document.getElementById('success-toast');
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
